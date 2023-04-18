@@ -1,0 +1,44 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+
+contract mySimpleContract{
+    string public Token;
+    string public TokenSymbol;
+	address public owner;
+	uint public totalSupply;
+    address public address1;
+    address public address2;
+
+    
+    constructor(){
+        Token = "Simplicitee";
+        TokenSymbol = "TEE";
+		totalSupply = 1 * 10 **2;
+        mint(msg.sender, totalSupply);
+    }
+    mapping (address => uint) public balance;
+
+    function mint(address add, uint amount) public {
+        balance[add] += amount;
+
+    }
+
+    function transferFrom(address inputadd) public  {
+        address1 = inputadd;
+    }
+
+    function transferTo(address inputadd) public  {
+        address2 = inputadd;
+    }
+    
+
+    function transfer(uint amount) public payable {
+        require(balance[address1] >= amount, "insufficient balance");
+        balance[address2] += amount;
+        balance[address1] -= amount;
+
+
+    }
+
+}
