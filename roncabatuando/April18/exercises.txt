@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+
+contract Contract {
+    uint public x;
+
+    function increment() external  {
+        x += 1;
+    }
+
+    function add(uint y) external view returns(uint z) {
+        z = x + y;
+    }
+
+    function double(uint doubleThis) external pure returns(uint doubled) {
+        doubled = doubleThis * 2;
+    }
+
+    function doublepart2(uint doubleThis, uint doItAgain) external pure returns(uint value1, uint value2) {
+        value1 = doubleThis * 2;
+        value2 = doItAgain * 2;
+        
+    }
+}
