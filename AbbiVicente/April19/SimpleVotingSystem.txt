@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.4;
+
+contract SimpleVotingSystem {
+    struct Candidate {
+        string name;
+		uint voteCount;
+	}
+
+    uint public candidateID = 100; 
+    uint public voteCount = 0; 
+    
+    mapping(uint => Candidate) public candidates;
+
+    function addNewCandidate(string memory _name) public {
+        candidates[candidateID] = Candidate(_name, candidateID++);
+    }
+
+    function castVote(uint _candidateID) public {
+        candidates[_candidateID].voteCount += 1;
+    }
+
+    function viewVote(uint _candidateID) public view returns (string memory, uint) {
+        return (candidates[candidateID].name, candidates[candidateID].voteCount);
+    }
+}

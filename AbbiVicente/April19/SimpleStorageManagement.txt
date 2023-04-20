@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.4;
+
+contract SimpleStorageManagement {
+    
+    mapping(address => mapping (string => string)) public users;
+    
+    string public user;
+
+    function storeUser(address _address, string memory _userInfo, string memory _user) public {
+       users[_address][_user] = _userInfo;
+    }
+
+    function retrieveKey(address _address, string memory _user) public view returns (string memory) {
+       return users[_address][_user];
+    }
+
+    function deleteUser(address _address, string memory _user) public {
+        delete users[_address][_user];
+    }
+}
